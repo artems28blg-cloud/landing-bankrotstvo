@@ -1,130 +1,339 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Консультация по банкротству</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: linear-gradient(135deg, #009900 0%, #006600 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-        .container {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            max-width: 600px;
-            width: 100%;
-            padding: 40px;
-            text-align: center;
-        }
-        h1 {
-            color: #009900;
-            margin-bottom: 15px;
-            font-size: 28px;
-        }
-        .subtitle {
-            color: #666;
-            margin-bottom: 30px;
-            font-size: 16px;
-            line-height: 1.6;
-        }
-        .features {
-            background: #f5f5f5;
-            border-radius: 8px;
-            padding: 20px;
-            margin: 30px 0;
-            text-align: left;
-        }
-        .features li {
-            color: #333;
-            margin: 10px 0;
-            margin-left: 20px;
-        }
-        .buttons {
-            display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 30px;
-        }
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            padding: 15px 30px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            gap: 10px;
-        }
-        .btn-whatsapp {
-            background: #25D366;
-            color: white;
-        }
-        .btn-whatsapp:hover {
-            background: #1da752;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.3);
-        }
-        .btn-telegram {
-            background: #0088cc;
-            color: white;
-        }
-        .btn-telegram:hover {
-            background: #0077b5;
-            transform: translateY(-2px);
-            box-shadow: 0 5px 20px rgba(0, 136, 204, 0.3);
-        }
-        .footer {
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #eee;
-            color: #999;
-            font-size: 13px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Гарант БЛГ - Банкротство физических лиц</title>
+<style>
+:root {
+--primary: #009900;
+--primary-dark: #007700;
+--bg: #f9f9f9;
+--text: #1a1a1a;
+--text-light: #666;
+--border: #e0e0e0;
+--shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+body {
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+background: var(--bg);
+color: var(--text);
+line-height: 1.6;
+}
+.container {
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+}
+.header {
+background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+color: white;
+padding: 40px 20px;
+text-align: center;
+border-radius: 12px;
+margin-bottom: 30px;
+box-shadow: var(--shadow);
+position: relative;
+overflow: hidden;
+}
+.header h1 {
+font-size: 28px;
+margin-bottom: 10px;
+font-weight: 700;
+}
+.header p {
+font-size: 16px;
+opacity: 0.95;
+margin-bottom: 5px;
+}
+.stats {
+display: flex;
+justify-content: space-around;
+margin-top: 25px;
+font-size: 14px;
+gap: 10px;
+flex-wrap: wrap;
+}
+.stat-item {
+text-align: center;
+flex: 1;
+min-width: 80px;
+}
+.stat-number {
+font-size: 24px;
+font-weight: 700;
+display: block;
+}
+.stat-label {
+opacity: 0.9;
+font-size: 11px;
+word-wrap: break-word;
+}
+.cta-button {
+background: white;
+color: var(--primary);
+border: none;
+padding: 14px 32px;
+font-size: 16px;
+font-weight: 600;
+border-radius: 8px;
+cursor: pointer;
+margin-top: 20px;
+transition: all 0.3s ease;
+box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+width: 100%;
+max-width: 300px;
+}
+.cta-button:hover {
+transform: translateY(-2px);
+box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+background: #f0f0f0;
+}
+.grid {
+display: grid;
+grid-template-columns: 1fr;
+gap: 15px;
+margin-bottom: 30px;
+}
+@media (min-width: 480px) {
+.grid {
+grid-template-columns: 1fr 1fr;
+}
+}
+.card {
+background: white;
+border: 1px solid var(--border);
+border-radius: 10px;
+padding: 20px;
+text-decoration: none;
+color: var(--text);
+transition: all 0.3s ease;
+cursor: pointer;
+display: block;
+box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+.card:hover {
+border-color: var(--primary);
+box-shadow: var(--shadow);
+transform: translateY(-4px);
+}
+.card-icon {
+font-size: 32px;
+margin-bottom: 12px;
+display: inline-block;
+}
+.card h3 {
+font-size: 16px;
+font-weight: 600;
+margin-bottom: 6px;
+color: var(--text);
+}
+.card p {
+font-size: 13px;
+color: var(--text-light);
+margin: 0;
+}
+.card-badge {
+display: inline-block;
+background: var(--primary);
+color: white;
+padding: 3px 8px;
+border-radius: 4px;
+font-size: 11px;
+margin-top: 8px;
+font-weight: 600;
+}
+.card-full {
+grid-column: 1 / -1;
+}
+.section-title {
+font-size: 18px;
+font-weight: 700;
+color: var(--primary);
+margin: 25px 0 15px 0;
+padding-bottom: 10px;
+border-bottom: 2px solid var(--primary);
+}
+.footer {
+text-align: center;
+padding: 20px;
+color: var(--text-light);
+font-size: 12px;
+margin-top: 30px;
+}
+.footer a {
+color: var(--primary);
+text-decoration: none;
+font-weight: 600;
+}
+.modal {
+display: none;
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.5);
+z-index: 1000;
+align-items: center;
+justify-content: center;
+}
+.modal.active {
+display: flex;
+}
+.modal-content {
+background: white;
+padding: 30px;
+border-radius: 12px;
+max-width: 400px;
+width: 90%;
+box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+.modal-close {
+float: right;
+font-size: 28px;
+font-weight: 300;
+cursor: pointer;
+color: var(--text-light);
+border: none;
+background: none;
+padding: 0;
+width: 30px;
+height: 30px;
+}
+.modal-close:hover {
+color: var(--text);
+}
+.modal h2 {
+margin: 20px 0 15px 0;
+color: var(--primary);
+}
+.contact-option {
+display: flex;
+align-items: center;
+padding: 15px;
+margin: 10px 0;
+background: var(--bg);
+border-radius: 8px;
+cursor: pointer;
+transition: all 0.3s ease;
+text-decoration: none;
+color: var(--text);
+border: 2px solid transparent;
+}
+.contact-option:hover {
+background: #f0f0f0;
+border-color: var(--primary);
+}
+.contact-option-icon {
+font-size: 24px;
+margin-right: 15px;
+}
+.contact-option-text {
+flex: 1;
+}
+.contact-option-text strong {
+display: block;
+color: var(--primary);
+}
+.contact-option-text small {
+color: var(--text-light);
+}
+.phone-highlight {
+background: var(--primary);
+color: white;
+padding: 15px;
+border-radius: 8px;
+text-align: center;
+margin: 20px 0;
+font-weight: 600;
+font-size: 18px;
+letter-spacing: 1px;
+}
+</style>
 </head>
 <body>
-    <div class="container">
-        <h1>킡рочная консультация по банкротству</h1>
-        <p class="subtitle">
-            Мы поможем вам реструктурировать долги, сохранить имущество и получить юридическую защиту
-        </p>
-        
-        <ul class="features">
-            <li>Еxpertly проведём процесс банкротства</li>
-            <li>Опыт более чем 10 лет</li>
-            <li>Успешных дел — с тысячи</li>
-            <li>Консультация бесплатна</li>
-        </ul>
-        
-        <div class="buttons">
-            <a href="https://wa.me/?text=Здравствуйте! Мне нужна консультация по банкротству" class="btn btn-whatsapp" target="_blank">
-                WhatsApp
-            </a>
-            <a href="https://t.me/" class="btn btn-telegram" target="_blank">
-                Telegram
-            </a>
-        </div>
-        
-        <div class="footer">
-            © 2025 Консультация по банкротству
-        </div>
-    </div>
+<div class="container">
+<div class="header">
+<h1>⚖️ Гарант</h1>
+<p>Центр помощи кредитным должникам</p>
+<p style="font-size: 14px; opacity: 0.85;">Помогаем избавиться от долгов за 6-12 месяцев</p>
+<div class="stats">
+<div class="stat-item">
+<span class="stat-number">5000+</span>
+<span class="stat-label">клиентов</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">№1</span>
+<span class="stat-label">2ГИС</span>
+</div>
+<div class="stat-item">
+<span class="stat-number">100%</span>
+<span class="stat-label">результат</span>
+</div>
+</div>
+<button class="cta-button" onclick="openContactModal()">📞 Записаться на консультацию</button>
+</div>
+<div class="section-title">📌 Узнайте о нас</div>
+<div class="grid">
+<a href="https://clck.ru/3A72nJ" target="_blank" class="card">
+<div class="card-icon">⭐</div>
+<h3>Отзывы клиентов</h3>
+<p>Реальные отзывы людей, которым мы помогли. Убедитесь сами!</p>
+<span class="card-badge">На 2ГИС</span>
+</a>
+<a href="https://t.me/garantblg" target="_blank" class="card">
+<div class="card-icon">📱</div>
+<h3>Telegram-канал</h3>
+<p>Советы, разборы кейсов, ответы на вопросы</p>
+<span class="card-badge">Подписаться</span>
+</a>
+</div>
+<div class="footer">
+<p>💚 Начните новую жизнь без долгов уже сегодня!</p>
+<p style="margin-top: 10px; font-size: 11px;">© 2025 Гарант БЛГ. Все права защищены.</p>
+</div>
+</div>
+<div id="contactModal" class="modal">
+<div class="modal-content">
+<button class="modal-close" onclick="closeContactModal()">×</button>
+<h2>Как с нами связаться?</h2>
+<div class="phone-highlight">+7 914-581-06-69</div>
+<div style="text-align: center; margin: 20px 0; color: var(--text-light); font-size: 14px;"><p>Или выберите удобный способ:</p></div>
+<a href="https://wa.me/79145810669?text=Здравствуйте!%20Мне%20нужна%20консультация%20по%20банкротству" target="_blank" class="contact-option">
+<div class="contact-option-icon">💬</div>
+<div class="contact-option-text"><strong>WhatsApp</strong><small>Быстрый ответ</small></div>
+</a>
+<a href="https://t.me/GARANT_BFL_RF?text=Здравствуйте!%20Мне%20нужна%20консультация%20по%20банкротству" target="_blank" class="contact-option">
+<div class="contact-option-icon">📱</div>
+<div class="contact-option-text"><strong>Telegram</strong><small>Личное сообщение</small></div>
+</a>
+<a href="tel:+79145810669" class="contact-option">
+<div class="contact-option-icon">📞</div>
+<div class="contact-option-text"><strong>Звонок</strong><small>Прямой разговор</small></div>
+</a>
+</div>
+</div>
+<script>
+function openContactModal() {
+document.getElementById('contactModal').classList.add('active');
+document.body.style.overflow = 'hidden';
+}
+function closeContactModal() {
+document.getElementById('contactModal').classList.remove('active');
+document.body.style.overflow = 'auto';
+}
+window.onclick = function(event) {
+const modal = document.getElementById('contactModal');
+if (event.target === modal) {
+closeContactModal();
+}
+}
+</script>
 </body>
 </html>
